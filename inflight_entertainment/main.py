@@ -21,11 +21,20 @@ def select_movies(flight_length, movie_lengths):
 
 # O(n) time
 def select_movies_two(flight_length, movie_lengths):
-    for i in range(0, len(movie_lengths)):
-        return True
+    movie_map = {}
+
+    for length in movie_lengths:
+        second_length = flight_length - length
+
+        # check if movie length in map *before*
+        # adding the length to the map
+        if second_length in movie_map:
+            return True
+
+        movie_map[length] = True
 
     return False
 
-res = select_movies_two(120, [40, 80, 90])
+res_0 = select_movies_two(120, [80, 90, 60, 60])
+res = select_movies_two(120, [80, 40, 90, 60])
 print(res)
-# flight_length - movie_lengths[0] = 120 - 40 = 80
