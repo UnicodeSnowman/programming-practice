@@ -7,10 +7,6 @@
 
 from functools import reduce
 
-visited = {
-    'www': {}
-}
-
 ### deep merge
 def merge(source, destination):
     """
@@ -32,12 +28,18 @@ def merge(source, destination):
     return destination
 
 def main(url):
+  visited = {
+      'www': {}
+  }
+
   www_index = url.find('www.')
   if www_index is not -1:
     visited['www'][url.split('www.')[1]] = True
 
   print(visited)
 
+# if storing in this way, we are O(x^n), where x is the number of possible
+# characters in a URL... i.e. 26 for only alphabetic lowercase, etc.
 def main_2(url):
   def iter(acc, val):
     temp = {}
