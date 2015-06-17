@@ -1,0 +1,19 @@
+### Two Egg Problem
+
+# A building has 100 floors. One of the floors is the highest floor an egg can be dropped from without breaking.
+# 
+# If an egg is dropped from above that floor, it will break. If it is dropped from that floor or below, 
+# it will be completely undamaged and you can drop the egg again.
+# 
+# Given two eggs, find the highest floor an egg can be dropped from without breaking, with as few drops as possible.
+
+naive solution: drop at 50, drop at 75, etc. until egg 1 breaks, then drop from the 1+ the last known safe height.
+
+(apparently) we can do better...
+
+skip less than 1/2 floors each time. if we skip 10 each time, worst case is 19 drops
+    - first egg 10 times, 2nd egg 9 times
+
+* the worse case total number of drops increases by one each time the first egg doesn't break *
+
+how can we keep the worst case amount from increasing each time first egg doesn't break?
