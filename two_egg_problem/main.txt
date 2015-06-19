@@ -17,3 +17,21 @@ skip less than 1/2 floors each time. if we skip 10 each time, worst case is 19 d
 * the worse case total number of drops increases by one each time the first egg doesn't break *
 
 how can we keep the worst case amount from increasing each time first egg doesn't break?
+    - skip one fewer floor each time we drop the first egg
+
+how do we know how many floors to skip the first time?
+    we know:
+        - want to skip as few floors as possible the first time we drop (so that if it breaks, we don't have to count up a bunch)
+        - we always want to be able to reduce the number of floors to skip by 1
+so at the top, we really want to only skip one floor
+
+so if n is the number of floors we skip the first time, and we skip 1 at the end...
+n + (n - 1) + (n - 2) + ... + 1 = 100
+
+were summing 1 -> n, it's a triangular series! https://en.wikipedia.org/?title=Triangular_number
+so...
+
+(n + 1) * (n / 2) = 100 
+=> n^2 + n - 200 = 0 => quadratic formula => 13.651 => round up to 14
+
+so first drop from 14, second drop 13 floors higher at 27. at worst, this gives us a total drop number of 14
